@@ -12,23 +12,44 @@
 	<h1 id="title">David and Florians super secure comment website!</h1>
 	</div>
 	
-	<main>
-		<section>
-			Secret Comments:
-			<textarea></textarea>
-			<button onclick="refresh()">Refresh</button>
-		</section>
-		<section>
-			(+) 
-			<input id="message" value="" placeholder= "Add new comment..." size="39" />
-			<button onclick="sendMessage()">Add another comment</button>
-		</section>
-		<section>
-			You added in this session:
-			<textarea id="my_contribution_TA"></textarea>
-		</section>
-	</main>
-	
+	<div class="row">
+		<div class="col-3 col-s-3 menu">
+			<ul>
+			  <li>Very secure</li>
+			  <li>Very useful</li>
+			  <li>Very interesting</li>
+			</ul>
+		</div>
+
+		<div class="col-6 col-s-9">
+			<main>
+				<section>
+					Secret Comments:
+					<textarea></textarea>
+					<button onclick="refresh()">Refresh</button>
+				</section>
+				<br />
+				<section>
+					<input id="email" type="text" placeholder="Please enter your email address" size="39"></input>
+					<input id="message" value="" placeholder= "Add new comment..." size="39" />
+					<button onclick="sendMessage()">Add another comment</button>
+				</section>
+				<br />
+				<section>
+					You added in this session:
+					<div id="contributionDIV"></div>
+				</section>
+			</main>
+		</div>
+
+		<div class="col-3 col-s-12">
+			<h2>Tips to keep you safe:</h2>
+			<p>Don't post any personal information</p>
+			<p>Don't share your email address</p>
+		</div>
+
+	</div>
+
 	<footer>
 		<h6>Debugging:</h6> 
 		<textarea id="log" rows="10" cols="120" >Logging goes here...</textarea>

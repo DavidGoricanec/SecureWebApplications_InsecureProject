@@ -6,9 +6,7 @@
   "scripts": {
     "build": "node_modules/typescript/bin/tsc --build",
     "copyfiles": "cp ./src/serverapp/config.json ./dist/serverapp/config.json && cp ./dist/public/static/webapp/js/index.js ./public/static/webapp/js/index.js",
-    "linkwebapp": "ln -sf ./static/webapp ./dist/public/static/webapp",
-    "linksrces": "ln -sf ../../../webapp-wa/src public/static/src",
-    "serve": "npm run linkwebapp && npm run linksrces && nodemon --watch ./src --ext ts --exec ts-node ./src/serverapp/",
+    "serve": "nodemon --watch ./src --ext ts --exec ts-node ./src/serverapp/",
     "start": "npm run copyfiles && node ./dist/serverapp ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

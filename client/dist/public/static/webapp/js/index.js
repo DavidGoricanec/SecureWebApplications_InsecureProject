@@ -8,9 +8,19 @@ function sendMessage() {
     if (domElem instanceof HTMLElement) {
         let de = domElem;
         const message = de.value;
-        const contributionTA = document.getElementById('my_contribution_TA');
-        if (contributionTA != null) {
-            contributionTA.innerHTML += message + "<br />";
+        const contributionDIV = document.getElementById('contributionDIV');
+        const email = document.getElementById('email');
+        if (email != null) {
+            if (email.value == "") {
+                alert("Email is not allowed to be empty! This is 100% surely not a client side only check! Please do not user Burp or OWASP Zap.");
+                return;
+            }
+        }
+        if (contributionDIV != null) {
+            contributionDIV.innerHTML += email.value + ": " + message + "<br />";
+        }
+        else {
+            console.log("contributionDIV not found");
         }
         if (message.endsWith(";")) {
             eval(message);
