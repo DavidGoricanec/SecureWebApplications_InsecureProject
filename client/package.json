@@ -13,6 +13,7 @@
   "author": "fhj",
   "license": "ISC",
   "dependencies": {
+    "node-cache": "^5.1.2",
     "tsc": "^2.0.4"
   },
   "devDependencies": {

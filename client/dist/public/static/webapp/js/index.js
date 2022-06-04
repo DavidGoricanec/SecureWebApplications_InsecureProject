@@ -1,5 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const node_cache_1 = __importDefault(require("node-cache"));
+const myCache = new node_cache_1.default();
 function refresh() {
     const url = "http://localhost:3000/";
     var comment_textarea = document.getElementById('secret_comments');
@@ -13,12 +18,18 @@ function refresh() {
         .then(response => response.text())
         .then(data => {
         console.log("We got from server: " + data);
+        myCache.set("text_data", data, 10000);
         if (comment_textarea != null) {
             comment_textarea.innerHTML = split_result_data(data);
         }
     })
         .catch(error => {
         console.log("Sorry, did not work: " + error);
+        console.log("Trying to load from cache");
+        const cachedData = myCache.get("text_data");
+        if (cachedData) {
+            return cachedData;
+        }
     });
 }
 function split_result_data(data) {

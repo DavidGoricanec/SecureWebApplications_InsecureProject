@@ -4,12 +4,19 @@
 
   section {
     margin-top: 25px;
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
   }
 
   .descriptor
   {
   }
   
+  #secret_comments{
+    width: 100%;
+    min-height: 7em;
+  }
   .row::after {
     content: "";
     clear: both;

@@ -1,4 +1,28 @@
 import { unwatchFile } from "fs";
+import NodeCache from "node-cache";
+
+const myCache = new NodeCache();
+
+function getSession(){
+	const url = "http://localhost:3000/";
+	var urlPath = `${url}session`;
+
+	console.log(urlPath);
+
+	fetch(urlPath, {
+		method: 'GET',
+		headers: { 'Content-Type': 'text/plain; charset=UTF-8' }
+	})
+	.then(response => response.text())
+	.then(data => {
+		console.log("We got from server: " + data);
+		//TO DO: Save Session for user
+	})
+	.catch(error => {
+		console.log("Sorry, did not work: " + error);
+	});
+
+}
 
 function refresh(){
 	const url = "http://localhost:3000/";
@@ -15,6 +39,8 @@ function refresh(){
 	.then(response => response.text())
 	.then(data => {
 	  console.log("We got from server: " + data);
+	  
+	  myCache.set("text_data", data, 10000)
 
 	  if (comment_textarea != null)
 	  {
@@ -24,6 +50,13 @@ function refresh(){
 	})
 	.catch(error => {
 	  console.log("Sorry, did not work: " + error);
+	  console.log("Trying to load from cache");
+	  
+	  const cachedData = myCache.get("text_data");
+
+	  if (cachedData) {
+		  return cachedData
+	  }
 	});
 }
 
