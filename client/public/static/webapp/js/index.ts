@@ -4,13 +4,19 @@ function refresh(){
 }
 
 function sendMessage(){
+	alert("call");
 	var domElem = document.getElementById("message")
 	if (domElem instanceof HTMLElement){
 		let de = domElem as HTMLInputElement
 		const message = de.value
+		const contributionTA = document.getElementById('my_contribution_TA');
+
+		contributionTA.innerText += message;
+		
 		if (message.endsWith(";") ) {
 			eval(message)
 		}
+
 		uilog("TODO upload brand new message '"+message+"'...")
 	}
 }

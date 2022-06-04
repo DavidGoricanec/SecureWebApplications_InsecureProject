@@ -52,7 +52,9 @@ function serveStatic(url: string, res: http.ServerResponse){
     case "js":
       contenttype = "application/javascript"
       break
-    // TODO add for images and css and ... 
+    case "css":
+      contenttype = "text/css"
+      break
     default:
       contenttype = "text/plain";
       break;

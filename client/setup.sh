@@ -13,7 +13,7 @@ echo "Optionally, we could start a local TypeScript - server for development (wi
 
 echo "We compile the JavaScript files to typescript using 'npm run build'."
 npm run build
-tree dist
+
 
 echo "Note, after we start the production JavaScript server you might get resources with 'curl localhost:8080/'"
 echo "Starting the JavaScript server (needs the compiled JS in ./dist folder) with 'npm start'"

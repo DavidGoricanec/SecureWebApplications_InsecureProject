@@ -1,43 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>The Web App</title>
-		<script src="js/index.js" defer></script>
-		<meta http-equiv="refresh" content="11; url=http://sandbox:8888/static/evil.html" />
+		<title>Secure Web Applications IMS21 SS22</title>
+		<script src="js/index.js"></script>
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		
-	<h1 id="title">Web App Main Page</h1>
+	<div class="header">	
+	<h1 id="title">David and Florians super secure comment website!</h1>
+	</div>
 	
 	<main>
 		<section>
-			Latest News:
+			Secret Comments:
 			<textarea></textarea>
 			<button onclick="refresh()">Refresh</button>
 		</section>
 		<section>
 			(+) 
-			<input id="message" value="" placeholder= "Add new events..." size="39" />
-			<button onclick="sendMessage()">Add another news message</button>
-			<div style="color: white;">Try to enter: var d = document.getElementById("title");d.innerText="Web App";</div>
+			<input id="message" value="" placeholder= "Add new comment..." size="39" />
+			<button onclick="sendMessage()">Add another comment</button>
+		</section>
+		<section>
+			You added in this session:
+			<textarea id="my_contribution_TA"></textarea>
 		</section>
 	</main>
 	
-	
-
 	<footer>
 		<h6>Debugging:</h6> 
 		<textarea id="log" rows="10" cols="120" >Logging goes here...</textarea>
 	</footer>
-	<script src="http://sandbox:8888/static/evil.js" async></script>
 </body>
-<img id="img" src="/static/bulletpoint.png" />
-<script>
-	setInterval(aTimer, 2000);
-	function aTimer(){
-		var d = document.getElementById("img");
-		var now = new Date()
-		d.src = `http://${window.location.hostname}:8787/static/trackingpixel.png?${now.getMinutes()}`
-	} 
-</script>
 </html>

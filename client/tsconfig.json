@@ -7,7 +7,7 @@
 
     /* Modules */
     "module": "commonjs",                                /* Specify what module code is generated. */
-    "rootDir": "./src",                                  /* Specify the root folder within your source files. */
+    "rootDir": "./",                                  /* Specify the root folder within your source files. */
     
     /* Emit */
     "sourceMap": true,                                   /* Create source map files for emitted JavaScript files. */
@@ -21,5 +21,5 @@
     "strict": true,                                      /* Enable all strict type-checking options. */
 
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "public/**/*.ts"]
 }
