@@ -9,7 +9,7 @@
     "linkwebapp": "ln -sf ../../../webapp-wa/dist/webapp public/static/webapp",
     "linksrces": "ln -sf ../../../webapp-wa/src public/static/src",
     "serve": "npm run linkwebapp && npm run linksrces && nodemon --watch ./src --ext ts --exec ts-node ./src/serverapp/",
-    "start": "npm run copyfiles && npm run linkwebapp && sudo node ./dist/serverapp",
+    "start": "npm run copyfiles && npm run linkwebapp && node ./dist/serverapp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "fhj",
