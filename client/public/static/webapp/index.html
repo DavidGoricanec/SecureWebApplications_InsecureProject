@@ -23,21 +23,31 @@
 
 		<div class="col-6 col-s-9">
 			<main>
-				<section>
-					Secret Comments:
-					<textarea></textarea>
-					<button onclick="refresh()">Refresh</button>
-				</section>
 				<br />
 				<section>
+					<span class="descriptor">Your email:</span>
 					<input id="email" type="text" placeholder="Please enter your email address" size="39"></input>
+					<br />
+					<span class="descriptor">Your entry:</span>
 					<input id="message" value="" placeholder= "Add new comment..." size="39" />
-					<button onclick="sendMessage()">Add another comment</button>
+					<br />
+					<button onclick="sendMessage()">Add another entry</button>
 				</section>
 				<br />
+
 				<section>
-					You added in this session:
+					<br />
+					<span class="descriptor">You added in this session:</span>
 					<div id="contributionDIV"></div>
+				</section>
+				<br />
+
+				<section>
+					<span class="descriptor">Secret Comments:</span>
+					<br />
+					<textarea></textarea>
+					<br />
+					<button onclick="refresh()">Refresh</button>
 				</section>
 			</main>
 		</div>
@@ -49,10 +59,5 @@
 		</div>
 
 	</div>
-
-	<footer>
-		<h6>Debugging:</h6> 
-		<textarea id="log" rows="10" cols="120" >Logging goes here...</textarea>
-	</footer>
 </body>
 </html>

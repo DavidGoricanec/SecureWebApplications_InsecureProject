@@ -1,6 +1,14 @@
 * {
     box-sizing: border-box;
   }
+
+  section {
+    margin-top: 25px;
+  }
+
+  .descriptor
+  {
+  }
   
   .row::after {
     content: "";

