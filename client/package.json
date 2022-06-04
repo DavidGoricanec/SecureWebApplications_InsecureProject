@@ -1,0 +1,26 @@
+{
+  "name": "server-n",
+  "version": "1.0.0",
+  "description": "The Nice (normal) TypeScript Server",
+  "main": "index.js",
+  "scripts": {
+    "build": "node_modules/typescript/bin/tsc --build",
+    "copyfiles": "cp ./src/serverapp/config.json ./dist/serverapp/config.json",
+    "linkwebapp": "ln -sf ../../../webapp-wa/dist/webapp public/static/webapp",
+    "linksrces": "ln -sf ../../../webapp-wa/src public/static/src",
+    "serve": "npm run linkwebapp && npm run linksrces && nodemon --watch ./src --ext ts --exec ts-node ./src/serverapp/",
+    "start": "npm run copyfiles && npm run linkwebapp && sudo node ./dist/serverapp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fhj",
+  "license": "ISC",
+  "dependencies": {
+    "tsc": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  }
+}

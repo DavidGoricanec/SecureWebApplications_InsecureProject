@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>A badly broken path traversal server</title>
+		<script src="js/main.js" defer></script>
+	</head>
+	<body>
+	<h3>We try to break the server by sending to modified url and hope the server leaks infos</h3>
+	<section>
+		<h6>Creative url:</h6> 
+        <input id="url" value="http://localhost:3010/info/public/pwd.txt" size="29" /><button id="sendButton">Send message</button>
+
+        <textarea id="log" rows="10" cols="120" >Log output and answers from the server will appear here...
+        </textarea>
+	</section>
+</body>
+</html>

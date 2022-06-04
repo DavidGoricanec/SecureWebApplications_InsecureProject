@@ -1,0 +1,1 @@
+Static text served by node server.
