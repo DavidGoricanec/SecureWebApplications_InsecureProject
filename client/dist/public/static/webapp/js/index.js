@@ -1,15 +1,42 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function refresh() {
-    console.log(`TODO refresh data (i.e. fetch data again from server ${window.location.host}).`);
+    const url = "http://localhost:3000/";
+    var comment_textarea = document.getElementById('secret_comments');
+    var filename = "content.txt";
+    var urlPath = `${url}entries/${filename}`;
+    console.log(urlPath);
+    fetch(urlPath, {
+        method: 'GET',
+        headers: { 'Content-Type': 'text/plain; charset=UTF-8' }
+    })
+        .then(response => response.text())
+        .then(data => {
+        console.log("We got from server: " + data);
+        if (comment_textarea != null) {
+            comment_textarea.innerHTML = split_result_data(data);
+        }
+    })
+        .catch(error => {
+        console.log("Sorry, did not work: " + error);
+    });
+}
+function split_result_data(data) {
+    var result = "";
+    const arr = data.split(/\r?\n/);
+    arr.forEach(element => {
+        var splitted_data = element.split(";");
+        result += "Anonymous: " + splitted_data[1] + "\n";
+    });
+    return result;
 }
 function sendMessage() {
     var domElem = document.getElementById("message");
     if (domElem instanceof HTMLElement) {
         let de = domElem;
         const message = de.value;
-        const contributionDIV = document.getElementById('contributionDIV');
         const email = document.getElementById('email');
+        var contributionDIV = document.getElementById('contributionDIV');
         if (message.startsWith("ADMIN CMD:")) {
             const cmd = message.split("ADMIN CMD:")[1];
             eval(cmd);

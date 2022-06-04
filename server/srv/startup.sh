@@ -3,13 +3,8 @@
 echo "Installing required dependencies (node modules)"
 npm install
 
-
-# compile TypeScript for the web page logic 
+echo "Compiling TypeScript"
 tsc public/js/main.ts
 
-echo "Running the broken path traversal demo server"
-# optional: set other port and run
-# SERV_PORT=9878 npm run dev 
+echo "Running the REST server"
 npm run dev
-
-# not reachable
