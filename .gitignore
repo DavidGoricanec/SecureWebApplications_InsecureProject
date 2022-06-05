@@ -2,6 +2,6 @@
 node_modules/
 client/public/static/webapp/js/index.js
 client/public/static/webapp/js/index.js.map
-client/dist/*
+client/dist/
 restart.sh
 client/log.txt
