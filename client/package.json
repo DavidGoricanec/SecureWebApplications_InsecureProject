@@ -1,7 +1,6 @@
 {
-  "name": "server-n",
+  "name": "insecure-client-app",
   "version": "1.0.0",
-  "description": "Secure Web Application TypeScript Server",
   "main": "index.js",
   "scripts": {
     "build": "node_modules/typescript/bin/tsc --build",
@@ -10,7 +9,7 @@
     "start": "npm run copyfiles && node ./dist/serverapp ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "fhj",
+  "author": "DGFL",
   "license": "ISC",
   "dependencies": {
     "node-cache": "^5.1.2",

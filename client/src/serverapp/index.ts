@@ -1,12 +1,4 @@
-/* src/app/index.ts */
-
-// TODO refactor:
-//     minimal structure
-// TODO add features:
-//     ...
-
 import http from 'http'
-import { composeAnswerMessage } from './tools/helper'
 import fs from 'fs'
 
 const cfg = require("./config.json")
@@ -19,12 +11,13 @@ function logEverything(req: http.IncomingMessage){
     console.log(`'${data}' has been saved to file '${logfile}'.`)
     });
 }
+
 function serveIndex(req: http.IncomingMessage, res: http.ServerResponse){
   res.writeHead(200, { 'Content-Type': 'text/plain' })
-  // res.write( composeAnswerMessage('It works'))
-  res.write("Try to visit the web page at /static/webapp/index.html ...")
+  res.write("Please visit the web page at /static/webapp/index.html ...")
   res.end()
 }
+
 function readAndWriteFile(res: http.ServerResponse, contenttype:string, filepath:string){
   fs.readFile(filepath, (err, data) => {
     if (err) {
@@ -68,22 +61,10 @@ function serveStatic(url: string, res: http.ServerResponse){
   readAndWriteFile(res,contenttype,filename)
 }
 
-function composeCookie(req: http.IncomingMessage, res: http.ServerResponse) : string[]{
-  // TODO: check if exists, update/delete/add cookie info
-  console.log(`TODO: analyse '${req.rawHeaders}'`)
-  const userID = 7
-  const expires = new Date(); expires.setTime(expires.getTime()+3*60*60*1000 )
-  return ['Set-Cookie',`userID=${userID}; Secure; Path=/;`,
-          'Set-Cookie',`language=en;expires="${expires.toUTCString()}";HttpOnly=/;`]
-}
-
-// The main server logic:
 http
   .createServer((req, res: http.ServerResponse) => {
     // we add logging
     logEverything(req)
-    // we add some cookies (unless already set)
-    const listOfCookies = composeCookie(req,res)
 
     // we rewrite urls
     var currUrl = req.url ?? "/"
@@ -91,18 +72,11 @@ http
     if (base == "src") {
       base = "static"
       currUrl = "/static"+currUrl
-        // rewrite to find the sources mapped in <file>.js.map
     }
     console.log(`${currUrl}: base='${base}'`)
-    // we add routing
     switch (base){
       case "":
         serveIndex(req,res)
-        break
-      case "internal":
-        // TODO allow only for some users/groups
-        res.writeHead(500, ['Content-Type',"text/plain"].concat (listOfCookies) )
-        res.end("TODO implement intern")
         break
       case "static":
         serveStatic(currUrl,res)

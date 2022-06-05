@@ -1,29 +1,17 @@
+# Our insecure personal diary web client
 
-Type Script Server
-
-# Our insecure project
-
-
-This ... project/server provides ... which is a solution to the problem of ...
-
+This projects contains a REST server and client app for the course Secure Web Applications (IMS,SS22) which has a lot of insecurities.
 
 ## How to run the project
 
-* requirements
+* Requirements
 	* NodeJS
 
-		
-* start
-	* ... by executing ...
+* Start
+	Please see README files in the subfolders.
 
-	```bash
-	./setup.sh
-	```
-		
 
 # About
 
 * by DG & FL
 * 2022
-
---- 

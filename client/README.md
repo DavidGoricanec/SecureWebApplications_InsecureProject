@@ -1,48 +1,20 @@
-
-Type Script Server
-
-# ...my...project...title
-
-
-This ... project/server provides ... which is a solution to the problem of ...
-
-![most-important-screenshot](./imgs/mainscreen.png)
-
+# Our insecure client app
+This is a client app for the course Secure Web Applications (IMS,SS22) which has a lot of insecurities.
 
 ## How to run the project
 
 * requirements
-	* ...
+	* NodeJS
 
-		
 * start
 	* ... by executing ...
 
 	```bash
 	./setup.sh
+	./run.sh
 	```
-	
-	![it-works-screenshot](./imgs/welcome.png)
-	
-	
-* test/check
-	* .. now you should be able to ... 
-
-
-## Architecture and Flow
-
-![system architecture](./imgs/architecture.png)
-
-
-## Start Development
-
-* install ...
-* configure your toolchain / ide by ... 
-
 
 # About
 
-* by ...
-* 20xx
-
---- 
+* by DG & FL
+* 2022
