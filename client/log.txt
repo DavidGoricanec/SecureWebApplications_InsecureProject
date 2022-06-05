@@ -46,3 +46,4 @@ Sun Jun 05 2022 15:02:16 GMT+0200 (Mitteleuropäische Sommerzeit): url='/w3image
 Sun Jun 05 2022 15:02:16 GMT+0200 (Mitteleuropäische Sommerzeit): url='/w3images/tablesetting.jpg'
 Sun Jun 05 2022 15:05:18 GMT+0200 (Mitteleuropäische Sommerzeit): url='/static/webapp/page.html'
 Sun Jun 05 2022 15:05:50 GMT+0200 (Mitteleuropäische Sommerzeit): url='/static/webapp/page.html'
+Sun Jun 05 2022 15:10:58 GMT+0200 (Mitteleuropäische Sommerzeit): url='/'
