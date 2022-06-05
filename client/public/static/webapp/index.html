@@ -1,70 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Secure Web Applications IMS21 SS22</title>
-		<script src="js/index.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="manifest" href="wpa/manifest.json" />
-		<meta name="apple-mobile-web-app-status-bar" content="#db4938" />
-		<meta name="theme-color" content="#db4938" />
-	</head>
-	<body onload="getMyEntries()">
+<html>
+<head>
+    <title>Secure Web Applications IMS21 SS22</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="js/index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="wpa/manifest.json" />
+    <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
+    <meta name="theme-color" content="#db4938" />
+</head>
+<body onload="getMyEntries()">
 
-	<div class="header">
-	<h1 id="title">David and Florians personal diaries!</h1>
-	</div>
+<div class="bgimg w3-display-container w3-text-white">
+  <div class="w3-display-middle w3-jumbo">
+    <p>David and Florians personal entries!</p>
+  </div>
+  <div class="w3-display-topleft w3-container w3-xlarge">
+    <p><button onclick="document.getElementById('contact').style.display='block'" class="w3-button w3-black">Entries</button></p>
+    <p><a class="w3-button w3-black" href="about.html">About</a></p>
+  </div>
+  <div class="w3-display-bottomleft w3-container">
+    <p class="w3-xlarge">Notes, reminders and messages</p>
+  </div>
+</div>
 
-	<div class="row">
-		<div class="col-3 col-s-3 menu">
-			<ul>
-			  <li>Very secure</li>
-			  <li>Very useful</li>
-			  <li>Very interesting</li>
-				<li>Very anonymous</li>
-				<li>All our secrets</li>
-			</ul>
-		</div>
+<!-- Contact Modal -->
+<div id="contact" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-black">
+      <span onclick="document.getElementById('contact').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Contact us</h1>
+    </div>
+    <div class="w3-container">
+        <main>
+            <section>
+                <span class="descriptor">Your email:</span>
+                <input id="email" type="text" placeholder="Please enter your email address" size="39"></input>
+                <br />
+                <span class="descriptor">Diary entry:</span>
+                <input id="message" value="" placeholder= "Add new comment..." size="39" />
+                <br />
+                <button onclick="sendMessage()">Add diary entry</button>
+            </section>
+            <br />
 
-		<div class="col-6 col-s-9">
-			<main>
-				<br />
-				<section>
-					<span class="descriptor">Your email:</span>
-					<input id="email" type="text" placeholder="Please enter your email address" size="39"></input>
-					<br />
-					<span class="descriptor">Diary entry:</span>
-					<input id="message" value="" placeholder= "Add new comment..." size="39" />
-					<br />
-					<button onclick="sendMessage()">Add diary entry</button>
-				</section>
-				<br />
+            <section>
+                <br />
+                <span class="descriptor">You added in this session:</span>
+                <div id="contributionDIV"></div>
+            </section>
+            <br />
 
-				<section>
-					<br />
-					<span class="descriptor">You added in this session:</span>
-					<div id="contributionDIV"></div>
-				</section>
-				<br />
+            <section>
+                <span class="descriptor">Previous (anonymous) entries:</span>
+                <br />
+                <textarea id = "secret_comments"></textarea>
+                <br />
+                <button onclick="refresh()">Refresh</button>
+                <br />
+            </section>
+        </main>
+    </div>
+  </div>
+</div>
 
-				<section>
-					<span class="descriptor">Previous (anonymous) entries:</span>
-					<br />
-					<textarea id = "secret_comments"></textarea>
-					<br />
-					<button onclick="refresh()">Refresh</button>
-				</section>
-			</main>
-		</div>
-
-		<div class="col-3 col-s-12">
-			<h2>Safety tips to remember:</h2>
-			<p>Don't post any personal information</p>
-			<p>Don't share email addresses</p>
-			<p>Even the securest site can be hacked</p>
-			<p><a href="about.html">About</a></p>
-		</div>
-
-	</div>
 </body>
 </html>
+

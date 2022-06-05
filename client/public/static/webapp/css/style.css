@@ -12,10 +12,19 @@
   .descriptor
   {
   }
+
+  body,h1,h5 {font-family: "Raleway", sans-serif}
+  body, html {height: 100%}
+  .bgimg {
+    background-image: url('https://www.publicdomainpictures.net/pictures/220000/nahled/open-blank-notebook-black-amp-white.jpg');
   
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
   #secret_comments{
     width: 100%;
-    min-height: 7em;
+    min-height: 10em;
   }
   .row::after {
     content: "";
