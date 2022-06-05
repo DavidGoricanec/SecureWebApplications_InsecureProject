@@ -8,7 +8,7 @@ var session = require('express-session');
 const SERV_PORT = process.env.SERV_PORT ||3000
 const baseDir = '.'; // current directory
 const sessionstr = 'eHuAOgpTvXXlYhXaYjTD';
-var session_cnt = 0;
+var session_cnt = Math.floor(Math.random());
 var active_sessions: Array<string> = [];
 
 const app: express.Application = express();
