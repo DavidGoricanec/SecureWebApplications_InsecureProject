@@ -73,7 +73,6 @@ app.post('/entries/:filename(*)', function (req, res) {
   const dataPath = baseDir +req.originalUrl
     console.log("SessionID " + req.sessionID + " - Saving entry from" + req.body.email + " + to " + dataPath)
     const sanitzedEmail = req.body.email.replace(/;/g, '')
-    const sanitzedEntry = req.body.entry.replace(/;/g, '')
     const sanitzedSession = req.sessionID.replace(/;/g, '');
     fs.appendFile(dataPath, `${sanitzedEmail};${sanitzedEntry};${sanitzedSession}\n`, (err) => {
       if (err) {
