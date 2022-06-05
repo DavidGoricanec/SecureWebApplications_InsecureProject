@@ -3,7 +3,7 @@
 // TODO refactor:
 //     minimal structure
 // TODO add features:
-//     ... 
+//     ...
 
 import http from 'http'
 import { composeAnswerMessage } from './tools/helper'
@@ -55,9 +55,12 @@ function serveStatic(url: string, res: http.ServerResponse){
     case "css":
       contenttype = "text/css"
       break
+    case "json":
+      contenttype = "application/json"
+      break
     default:
-      contenttype = "text/plain";
-      break;
+      contenttype = "text/plain"
+      break
   }
   res.writeHead(200, { 'Content-Type': contenttype })
   var filename = `public${url}`;

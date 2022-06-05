@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node_modules/typescript/bin/tsc --build",
-    "copyfiles": "cp ./src/serverapp/config.json ./dist/serverapp/config.json && cp ./dist/public/static/webapp/js/index.js ./public/static/webapp/js/index.js",
+    "copyfiles": "cp ./src/serverapp/config.json ./dist/serverapp/config.json && cp ./dist/public/static/webapp/js/index.js ./public/static/webapp/js/index.js && cp ./dist/public/static/webapp/js/index.js.map ./public/static/webapp/js/index.js.map",
     "serve": "nodemon --watch ./src --ext ts --exec ts-node ./src/serverapp/",
     "start": "npm run copyfiles && node ./dist/serverapp ",
     "test": "echo \"Error: no test specified\" && exit 1"

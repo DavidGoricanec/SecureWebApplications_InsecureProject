@@ -1,4 +1,7 @@
 *.DS_Store
 node_modules/
 client/public/static/webapp/js/index.js
+client/public/static/webapp/js/index.js.map
+client/dist/*
 restart.sh
+client/log.txt

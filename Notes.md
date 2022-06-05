@@ -8,15 +8,7 @@
 
 #Server Side
 1. Path treversal
-2. (TO DO) Remote Server execution
-3. (in progress) Session highjacking, random string + counter integer; random string für alle gleich 
-
-
-
-TO DO: Known Problems:
-Client:
-    getSession -> result soll beim User gespeichert werden und die session soll mit den requests mitgesendet werden
-    const myCache = new NodeCache(); -> wirft Fehler (wird bei refresh verwendet)
-
-Server:
-    req.session wird nicht genommen (Suche im code nach "req.session" -> wird in zwei if statements verwendet)
+2. Session highjacking, random string + counter integer; random string für alle gleich
+3. Alle Errormeldungen werden 1:1 an den Client übermittelt
+4. Keine Inputvalidierungen
+3. (TO DO) Remote Server execution

@@ -1,10 +1,38 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const node_cache_1 = __importDefault(require("node-cache"));
-const myCache = new node_cache_1.default();
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+        navigator.serviceWorker
+            .register("/wpa/serviceWorker.js")
+            .then(res => console.log("service worker registered"))
+            .catch(err => console.log("service worker not registered", err));
+    });
+}
+function sendEntryToServer(email, entry) {
+    const url = "http://localhost:3000/";
+    var filename = "content.txt";
+    var urlPath = `${url}entries/${filename}`;
+    if (email != "" && entry != "") {
+        const item = {
+            email: email,
+            entry: entry,
+        };
+        console.log(`We send '${item}' to the server ${urlPath}.`);
+        fetch(urlPath, {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify(item),
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+        })
+            .then(response => response.text())
+            .then(data => {
+            console.log("we got from server: " + data);
+        })
+            .catch(error => {
+            console.log("Sorry, did not work: " + error);
+        });
+    }
+}
 function refresh() {
     const url = "http://localhost:3000/";
     var comment_textarea = document.getElementById('secret_comments');
@@ -13,23 +41,39 @@ function refresh() {
     console.log(urlPath);
     fetch(urlPath, {
         method: 'GET',
+        credentials: 'include',
         headers: { 'Content-Type': 'text/plain; charset=UTF-8' }
     })
         .then(response => response.text())
         .then(data => {
         console.log("We got from server: " + data);
-        myCache.set("text_data", data, 10000);
         if (comment_textarea != null) {
             comment_textarea.innerHTML = split_result_data(data);
         }
     })
         .catch(error => {
         console.log("Sorry, did not work: " + error);
-        console.log("Trying to load from cache");
-        const cachedData = myCache.get("text_data");
-        if (cachedData) {
-            return cachedData;
+    });
+}
+function getMyEntries() {
+    const url = "http://localhost:3000/";
+    var urlPath = `${url}getMyEntries/`;
+    fetch(urlPath, {
+        method: 'GET',
+        credentials: 'include',
+        headers: { 'Content-Type': 'text/plain; charset=UTF-8' }
+    })
+        .then(response => response.text())
+        .then(data => {
+        console.log("We got from server: " + data);
+        var contributionDIV = document.getElementById('contributionDIV');
+        if (contributionDIV != null) {
+            contributionDIV.innerHTML = data;
         }
+    })
+        .catch(error => {
+        console.log("Sorry, did not work: " + error);
+        console.log("Trying to load from cache");
     });
 }
 function split_result_data(data) {
@@ -65,7 +109,7 @@ function sendMessage() {
         else {
             console.log("contributionDIV not found");
         }
-        console.log("TODO upload brand new message '" + message + "'...");
+        sendEntryToServer(email.value, message);
     }
 }
 //# sourceMappingURL=index.js.map

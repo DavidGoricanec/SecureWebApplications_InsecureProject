@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // TODO refactor:
 //     minimal structure
 // TODO add features:
-//     ... 
+//     ...
 const http_1 = __importDefault(require("http"));
 const fs_1 = __importDefault(require("fs"));
 const cfg = require("./config.json");
@@ -52,6 +52,9 @@ function serveStatic(url, res) {
             break;
         case "css":
             contenttype = "text/css";
+            break;
+        case "json":
+            contenttype = "application/json";
             break;
         default:
             contenttype = "text/plain";
